@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pipeline\DictionaryExtensionsTests.cs" />
+    <Compile Include="Pipeline\EnumerableExtensionsTests.cs" />
     <Compile Include="Reflection\TypeExtensionsTests.cs" />
     <Compile Include="Serialization\SerializationExtensionsTests.cs" />
     <Compile Include="Transformation\GroupingExtensionsTests.cs" />

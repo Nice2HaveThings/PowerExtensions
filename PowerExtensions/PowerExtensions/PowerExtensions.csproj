@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pipeline\DictionaryExtensions.cs" />
+    <Compile Include="Pipeline\EnumerableExtensions.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
     <Compile Include="Serialization\SerializationExtensions.cs" />
     <Compile Include="Transformation\GroupingExtensions.cs" />

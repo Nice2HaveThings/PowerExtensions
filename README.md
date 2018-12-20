@@ -6,6 +6,9 @@ PowerExtensions are a hobby project of a senior developer which helps you to wri
 * Linq
 	* IDictionary<K,V>.AddIfMissing(key, Func<K,V>)
 	* IDictionary<K,V>.GetOrAdd(key, Func<K,V>)
+	* IEnumerable<T>.Add(params T[])
+	* IEnumerable<T>.Append(params T[])
+	* IEnumerable<T>.Prepend(params T[])
 	* IEnumerable<T>.Second()
 	* IEnumerable<T>.Second(Predicate)
 	* IEnumerable<T>.SecondOrDefault()
