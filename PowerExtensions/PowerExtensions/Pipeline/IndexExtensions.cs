@@ -12,7 +12,23 @@ namespace PowerExtensions.Pipeline
 
         public static TElement Second<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition)
         {
-            return elements.GetElementAtIndex(condition, 2);
+            if(elements.TryGetElementAtIndex(condition, 2, out TElement result))
+            {
+                return result;
+            }
+
+            throw new InvalidOperationException("Not enough elements in collection");
+        }
+
+        public static TElement SecondOrDefault<TElement>(this IEnumerable<TElement> elements)
+        {
+            return elements.SecondOrDefault(e => true);
+        }
+
+        public static TElement SecondOrDefault<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition)
+        {
+            elements.TryGetElementAtIndex(condition, 2, out TElement result);
+            return result;
         }
 
         public static TElement Third<TElement>(this IEnumerable<TElement> elements)
@@ -22,21 +38,39 @@ namespace PowerExtensions.Pipeline
 
         public static TElement Third<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition)
         {
-            return elements.GetElementAtIndex(condition, 3);
-        }
-
-        private static TElement GetElementAtIndex<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition, int index)
-        {
-            int matches = 0;
-            foreach(TElement element in elements)
+            if(elements.TryGetElementAtIndex(condition, 3, out TElement result))
             {
-                if(condition(element) && ++matches == index)
-                {
-                    return element;
-                }
+                return result;
             }
 
             throw new InvalidOperationException("Not enough elements in collection");
+        }
+
+        public static TElement ThirdOrDefault<TElement>(this IEnumerable<TElement> elements)
+        {
+            return elements.ThirdOrDefault(e => true);
+        }
+
+        public static TElement ThirdOrDefault<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition)
+        {
+            elements.TryGetElementAtIndex(condition, 3, out TElement result);
+            return result;
+        }
+
+        private static bool TryGetElementAtIndex<TElement>(this IEnumerable<TElement> elements, Predicate<TElement> condition, int index, out TElement element)
+        {
+            int matches = 0;
+            foreach(TElement ele in elements)
+            {
+                if(condition(ele) && ++matches == index)
+                {
+                    element = ele;
+                    return true;
+                }
+            }
+
+            element = default;
+            return false;
         }
     }
 }

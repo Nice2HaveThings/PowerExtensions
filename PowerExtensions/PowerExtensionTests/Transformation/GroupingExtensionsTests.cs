@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using PowerExtensions.Pipeline;
+using PowerExtensions.Transformation;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PowerExtensionTests.Pipeline
+namespace PowerExtensionTests.Transformation
 {
     [TestFixture]
     public class GroupingExtensionsTests

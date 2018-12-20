@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PowerExtensions.Pipeline
+namespace PowerExtensions.Transformation
 {
     public static class GroupingExtensions
     {

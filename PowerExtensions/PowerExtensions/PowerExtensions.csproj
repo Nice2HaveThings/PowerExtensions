@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pipeline\DictionaryExtensions.cs" />
-    <Compile Include="Pipeline\GroupingExtensions.cs" />
+    <Compile Include="Reflection\TypeExtensions.cs" />
+    <Compile Include="Serialization\SerializationExtensions.cs" />
+    <Compile Include="Transformation\GroupingExtensions.cs" />
     <Compile Include="Pipeline\IndexExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=5.5.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -52,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pipeline\DictionaryExtensionsTests.cs" />
-    <Compile Include="Pipeline\GroupingExtensionsTests.cs" />
+    <Compile Include="Reflection\TypeExtensionsTests.cs" />
+    <Compile Include="Serialization\SerializationExtensionsTests.cs" />
+    <Compile Include="Transformation\GroupingExtensionsTests.cs" />
     <Compile Include="Pipeline\IndexExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
