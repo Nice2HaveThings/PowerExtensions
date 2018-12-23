@@ -35,6 +35,86 @@ namespace PowerExtensionTests.Serialization
             deserialized.MyString.Should().Be(strVal);
         }
 
+        [Test]
+        public void GetBytes_DefaultWithValidValue_ShouldWork()
+        {
+            string value = "test";
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            byte[] result = value.GetBytes();
+
+            using (MemoryStream stream = new MemoryStream(result))
+            {
+                formatter.Deserialize(stream).Should().Be(value);
+            }
+        }
+
+        [Test]
+        public void GetBytes_DefaultWithNull_ShouldFail()
+        {
+            string value = null;
+
+            Action fail = () => value.GetBytes();
+
+            fail.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void GetBytes_WithFormatterAndValidValue_ShouldWork()
+        {
+            string value = "test";
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            byte[] result = value.GetBytes(formatter);
+
+            using (MemoryStream stream = new MemoryStream(result))
+            {
+                formatter.Deserialize(stream).Should().Be(value);
+            }
+        }
+
+        [Test]
+        public void GetBytes_WithFormatterAndNull_ShouldFail()
+        {
+            string value = null;
+
+            Action fail = () => value.GetBytes(new BinaryFormatter());
+
+            fail.Should().Throw<ArgumentNullException>();
+        }
+
+        [Test]
+        public void Deserialize_ValidConversion_ShouldWork()
+        {
+            string value = "test";
+            BinaryFormatter formatter = new BinaryFormatter();
+            string result;
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, value);
+                stream.Position = 0;
+                result = formatter.Deserialize<string>(stream);
+            }
+
+            result.Should().Be(value);
+        }
+
+        [Test]
+        public void Deserialize_InvalidConversion_ShouldWork()
+        {
+            string value = "test";
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, value);
+                stream.Position = 0;
+                Action fail = () => formatter.Deserialize<int>(stream);
+                fail.Should().Throw<InvalidCastException>();
+            }
+        }
+
         [Serializable]
         private class MySerializableClass : ISerializable
         {
