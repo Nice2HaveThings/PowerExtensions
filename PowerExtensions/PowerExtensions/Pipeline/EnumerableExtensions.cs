@@ -65,5 +65,10 @@ namespace PowerExtensions.Pipeline
                 yield return subResult;
             }
         }
+
+        public static List<TResult> SelectList<TType, TResult>(this IEnumerable<TType> values, Func<TType, TResult> transformation)
+        {
+            return values.Select(transformation).ToList();
+        }
     }
 }

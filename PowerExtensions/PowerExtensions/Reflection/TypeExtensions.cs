@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace PowerExtensions.Reflection
@@ -31,6 +33,19 @@ namespace PowerExtensions.Reflection
                 typeInfo.IsClass ||
                 typeInfo.IsInterface ||
                 Nullable.GetUnderlyingType(type) != null;
+        }
+
+        public static IEnumerable<PropertyInfo> GetPropertiesAll(this Type type)
+        {
+            return type.GetTypeInfo().DeclaredProperties;
+        }
+
+        public static IEnumerable<FieldInfo> GetFieldsAll(this Type type)
+        {
+            return type
+                .GetTypeInfo()
+                .DeclaredFields
+                .Where(f => !f.Name.EndsWith(">k__BackingField"));
         }
     }
 }

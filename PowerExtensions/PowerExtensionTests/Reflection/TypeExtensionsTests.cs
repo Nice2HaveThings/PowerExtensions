@@ -3,6 +3,8 @@ using NUnit.Framework;
 using PowerExtensions.Reflection;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace PowerExtensionTests.Reflection
 {
@@ -102,6 +104,61 @@ namespace PowerExtensionTests.Reflection
             bool result = type.IsNullable();
 
             result.Should().BeFalse();
+        }
+
+        [Test]
+        public void GetPropertiesAll_WithClass_ShouldReturnAllPropertes()
+        {
+            IEnumerable<PropertyInfo> infos = typeof(ReflectionTestClass).GetPropertiesAll();
+
+            infos.Select(i => i.Name).Should().BeEquivalentTo
+                (
+                    new[]
+                    {
+                        "PublicStaticProperty",
+                        "PrivateStaticProperty",
+                        "PublicProperty",
+                        "PrivateProperty"
+                    }
+                );
+        }
+
+        [Test]
+        public void GetPropertiesAll_WithEnum_ShouldReturnNoProperties()
+        {
+            IEnumerable<PropertyInfo> infos = typeof(Day).GetPropertiesAll();
+
+            infos.Should().BeEmpty();
+        }
+
+        [Test]
+        public void GetFieldsAll_WithClass_ShouldReturnAllFields()
+        {
+            IEnumerable<FieldInfo> infos = typeof(ReflectionTestClass).GetFieldsAll();
+
+            infos.Select(i => i.Name).Should().BeEquivalentTo
+                (
+                    new[]
+                    {
+                        "PublicField",
+                        "PrivateField"
+                    }
+                );
+        }
+
+        private class ReflectionTestClass
+        {
+            public static string PublicStaticProperty { get; set; }
+
+            private static string PrivateStaticProperty { get; set; }
+
+            public string PublicProperty { get; set; }
+
+            private string PrivateProperty { get; set; }
+
+            public string PublicField;
+
+            private string PrivateField;
         }
 
         private enum Day
