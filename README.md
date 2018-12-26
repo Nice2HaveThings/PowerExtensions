@@ -21,7 +21,16 @@ PowerExtensions are a hobby project of a senior developer which helps you to wri
 	* IEnumerable<T>.Third(Predicate)
 	* IEnumerable<T>.ThirdOrDefault()
 	* IEnumerable<T>.ThirdOrDefault(Predicate)
+* Querying
+	* IDataReader.GetValue<T>(name)
+	* IDataReader.GetValue<T>(ordinal)
+	* IDataReader.GetValueOrDefault<T>(name)
+	* IDataReader.GetValueOrDefault<T>(ordinal)
 * Reflection
+	* PropertyInfo.IsInstance()
+	* PropertyInfo.IsNonPublic()
+	* PropertyInfo.IsPublic()
+	* PropertyInfo.IsStatic()
 	* Type.GetFieldsAll()
 	* Type.GetPropertiesAll()
 	* Type.IsComplex()
