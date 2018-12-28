@@ -8,7 +8,7 @@ using System.Data;
 namespace PowerExtensionTests.Querying
 {
     [TestFixture]
-    public class DataReaderExtensionTests
+    public class DataReaderExtensionsTests
     {
         private static TestCaseData[] _readerNullValues =
         {

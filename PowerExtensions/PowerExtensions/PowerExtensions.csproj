@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Execution\MultidimensionalArrayExtensions.cs" />
     <Compile Include="Pipeline\DictionaryExtensions.cs" />
     <Compile Include="Pipeline\EnumerableExtensions.cs" />
     <Compile Include="Querying\DataReaderExtensions.cs" />
+    <Compile Include="Querying\StringExtensions.cs" />
     <Compile Include="Reflection\PropertyInfoExtensions.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
     <Compile Include="Serialization\SerializationExtensions.cs" />
