@@ -9,11 +9,11 @@ namespace PowerExtensions.Execution
     public static class MultidimensionalArrayExtensions
     {
         /// <summary>
-        /// Executes the <paramref name="rowAction"/> for each element of the array
+        /// Executes the <paramref name="action"/> for each element of the array
         /// </summary>
         /// <typeparam name="T">Value-Typ of the array</typeparam>
         /// <param name="array">Array which is extended</param>
-        /// <param name="rowAction">Action that should be executed for the elements</param>
+        /// <param name="action">Action that should be executed for the elements</param>
         public static void ForEach<T>(this T[,] array, Action<T> action)
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -46,11 +46,11 @@ namespace PowerExtensions.Execution
         }
 
         /// <summary>
-        /// Executes the <paramref name="rowAction"/> for each col of the array
+        /// Executes the <paramref name="colAction"/> for each col of the array
         /// </summary>
         /// <typeparam name="T">Value-Typ of the array</typeparam>
         /// <param name="array">Array which is extended</param>
-        /// <param name="rowAction">Action that should be executed for the cols</param>
+        /// <param name="colAction">Action that should be executed for the cols</param>
         public static void ForEachCol<T>(this T[,] array, Action<T[]> colAction)
         {
             for (int i = 0; i < array.GetLength(1); i++)

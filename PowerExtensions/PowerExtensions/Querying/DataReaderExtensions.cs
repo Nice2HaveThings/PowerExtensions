@@ -9,7 +9,7 @@ namespace PowerExtensions.Querying
     public static class DataReaderExtensions
     {
         /// <summary>
-        /// Returns the value of the <paramref cref="reader"/> at the <paramref cref="ordinal"/>
+        /// Returns the value of the <paramref name="reader"/> at the <paramref name="ordinal"/>
         /// </summary>
         /// <typeparam name="TType">Value-Type of the Result</typeparam>
         /// <param name="reader">Reader that is extended</param>
@@ -21,7 +21,7 @@ namespace PowerExtensions.Querying
         }
 
         /// <summary>
-        /// Returns the value of the <paramref cref="reader"/> from the <paramref name="name"/>
+        /// Returns the value of the <paramref name="reader"/> from the <paramref name="name"/>
         /// </summary>
         /// <typeparam name="TType">Value-Type of the Result</typeparam>
         /// <param name="reader">Reader that is extended</param>
@@ -33,7 +33,7 @@ namespace PowerExtensions.Querying
         }
 
         /// <summary>
-        /// Returns the value of the <paramref cref="reader"/> at the <paramref cref="ordinal"/> or default value of <typeparamref name="TType"/>
+        /// Returns the value of the <paramref name="reader"/> at the <paramref name="ordinal"/> or default value of <typeparamref name="TType"/>
         /// </summary>
         /// <typeparam name="TType">Value-Type of the Result</typeparam>
         /// <param name="reader">Reader that is extended</param>
@@ -50,7 +50,7 @@ namespace PowerExtensions.Querying
         }
 
         /// <summary>
-        /// Returns the value of the <paramref cref="reader"/> from the <paramref name="name"/> or default value of <typeparamref name="TType"/>
+        /// Returns the value of the <paramref name="reader"/> from the <paramref name="name"/> or default value of <typeparamref name="TType"/>
         /// </summary>
         /// <typeparam name="TType">Value-Type of the Result</typeparam>
         /// <param name="reader">Reader that is extended</param>
