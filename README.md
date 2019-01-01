@@ -24,7 +24,7 @@ Those methods are used in my daily business and i guess everyone of you had writ
 	* IEnumerable\<T>.Second() : T
 	* IEnumerable\<T>.Second(Predicate) : T
 	* IEnumerable\<T>.SecondOrDefault() : T
-    	* IEnumerable\<T>.SecondOrDefault(Predicate) : T
+	* IEnumerable\<T>.SecondOrDefault(Predicate) : T
 	* IEnumerable\<T>.SelectList(Func<T, R>) : List\<R>
 	* IEnumerable\<T>.Third() : T
 	* IEnumerable\<T>.Third(Predicate) : T
