@@ -15,9 +15,9 @@ Those methods are used in my daily business and i guess everyone of you had writ
 	* IDictionary<K, V>.AddIfMissing(key, Func<K, V>) : void
 	* IDictionary<K, V>.GetOrAdd(key, Func<K, V>) : V
 	* IEnumerable<IGrouping<K, V>>.ToDictionary() : IDictionary<K, IEnumerable\<V>>
-	* IEnumerable\<T>.Add(params T[])
-	* IEnumerable\<T>.Append(params T[])
-	* IEnumerable\<T>.Chunk(chunkSize)
+	* IEnumerable\<T>.Add(params T[]) : IEnumerable\<T>
+	* IEnumerable\<T>.Append(params T[]) : IEnumerable\<T>
+	* IEnumerable\<T>.Chunk(chunkSize) : IEnumerable<IEnumerable\<T>>
 	* IEnumerable\<TLeft>.CrossJoin(IEnumerable\<TRight>) : IEnumerable<Tuple<TLeft, TRight>>
 	* IEnumerable\<TLeft>.CrossJoin(IEnumerable\<TRight>, Func<TLeft, TRight, TResult>) : IEnumerable\<TResult>
 	* IEnumerable\<T>.Prepend(params T[]) : IEnumerable\<T>
