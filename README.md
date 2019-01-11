@@ -56,6 +56,6 @@ Those methods are used in my daily business and i guess everyone of you had writ
 	* String.GetBytes(IFormatter) : byte[]
 
 ### Planned for next Version
-*Linq
+* Linq
 	* IEnumerable\<T>.Distinct(Func<T, Identifier>)
 
