@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PowerExtensions.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -126,6 +127,30 @@ namespace PowerExtensions.Pipeline
         public static List<TResult> SelectList<TType, TResult>(this IEnumerable<TType> collection, Func<TType, TResult> transformation)
         {
             return collection.Select(transformation).ToList();
+        }
+
+        /// <summary>
+        /// Returns different values of the <paramref name="collection"/> based on <paramref name="selector"/>.
+        /// </summary>
+        /// <typeparam name="TType">Value-Type of the collection</typeparam>
+        /// <typeparam name="TIdentifier">Value-Type of the identifier</typeparam>
+        /// <param name="collection">Collection that is extended</param>
+        /// <param name="selector">Function to generate the identifier for comparing</param>
+        /// <returns>Distinct values of the collection</returns>
+        public static IEnumerable<TType> Distinct<TType, TIdentifier>(this IEnumerable<TType> collection, Func<TType, TIdentifier> selector)
+        {
+            List<TIdentifier> existing = new List<TIdentifier>();
+            foreach(TType element in collection)
+            {
+                TIdentifier elementSelector = selector(element);
+                if(existing.Contains(elementSelector))
+                {
+                    continue;
+                }
+
+                existing.Add(elementSelector);
+                yield return element;
+            }
         }
     }
 }

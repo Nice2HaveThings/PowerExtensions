@@ -54,3 +54,8 @@ Those methods are used in my daily business and i guess everyone of you had writ
 	* SerializationInfo.GetValue\<T>(name) : T
 	* String.GetBytes() : byte[]	
 	* String.GetBytes(IFormatter) : byte[]
+
+### Planned for next Version
+*Linq
+	* IEnumerable\<T>.Distinct(Func<T, Identifier>)
+

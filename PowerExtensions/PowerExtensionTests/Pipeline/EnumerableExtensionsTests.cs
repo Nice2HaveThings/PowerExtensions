@@ -177,5 +177,75 @@ namespace PowerExtensionTests.Pipeline
             result.Second().Should().BeEquivalentTo(new[] { 5, 6, 7, 8 });
             result.Third().Should().BeEquivalentTo(new[] { 9, 10 });
         }
+
+        [Test]
+        public void Distinct_SimpleType_ShouldWork()
+        {
+            DistinctClass a = new DistinctClass { SomeNumber = 1 };
+            DistinctClass b = new DistinctClass { SomeNumber = 1 };
+            DistinctClass c = new DistinctClass { SomeNumber = 2 };
+            List<DistinctClass> list = new List<DistinctClass> { a, b, c };
+
+            List<DistinctClass> result = list.Distinct(l => l.SomeNumber).ToList();
+
+            result.Should().HaveCount(2);
+            result.Should().Contain(a);
+            result.Should().Contain(c);
+        }
+
+        [Test]
+        public void Distinct_EquatableType_ShouldWork()
+        {
+            DistinctClass a = new DistinctClass { C = new DistinctClass.Comparable { B = "a" } };
+            DistinctClass b = new DistinctClass { C = new DistinctClass.Comparable { B = "a" } };
+            DistinctClass c = new DistinctClass { C = new DistinctClass.Comparable { B = "b" } };
+            List<DistinctClass> list = new List<DistinctClass> { a, b, c };
+
+            List<DistinctClass> result = list.Distinct(l => l.C).ToList();
+
+            result.Should().HaveCount(2);
+            result.Should().Contain(a);
+            result.Should().Contain(c);
+        }
+
+        [Test]
+        public void Distinct_NotEquatableType_ShouldNotBreak()
+        {
+            DistinctClass a = new DistinctClass { NC = new DistinctClass.NotComparable { A = "a" } };
+            DistinctClass b = new DistinctClass { NC = new DistinctClass.NotComparable { A = "a" } };
+            DistinctClass c = new DistinctClass { NC = new DistinctClass.NotComparable { A = "b" } };
+            List<DistinctClass> list = new List<DistinctClass> { a, b, c };
+
+            List<DistinctClass> result = list.Distinct(l => l.NC).ToList();
+
+            result.Should().HaveCount(3);
+            result.Should().Contain(a);
+            result.Should().Contain(b);
+            result.Should().Contain(c);
+        }
+
+        private class DistinctClass
+        {
+            public int SomeNumber { get; set; }
+
+            public NotComparable NC { get; set; }
+
+            public Comparable C { get; set; }
+
+            public class NotComparable
+            {
+                public string A { get; set; }
+            }
+
+            public class Comparable : IEquatable<Comparable>
+            {
+                public string B { get; set; }
+
+                public bool Equals(Comparable other)
+                {
+                    return B == other.B;
+                }
+            }
+        }
     }
 }
